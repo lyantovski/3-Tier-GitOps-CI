@@ -146,7 +146,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: image
-          image-ref: aakashdevops/backend:${{ env.IMAGE_TAG }}
+          image-ref: ${{ secrets.ACR_LOGIN_SERVER }}/backend:${{ env.IMAGE_TAG }}
           format: table
           exit-code: '0'                 # set to '1' to fail on vulns
           ignore-unfixed: true
@@ -157,7 +157,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: image
-          image-ref: aakashdevops/frontend:${{ env.IMAGE_TAG }}
+          image-ref: ${{ secrets.ACR_LOGIN_SERVER }}/frontend:${{ env.IMAGE_TAG }}
           format: table
           exit-code: '0'
           ignore-unfixed: true
@@ -172,7 +172,7 @@ jobs:
       - name: Checkout CD repo
         uses: actions/checkout@v4
         with:
-          repository: AAKASHDEEP786/3-Tier-GitOps-CD
+          repository: lyantovski/3-Tier-GitOps-CD
           ref: main
           token: ${{ secrets.CD_REPO_TOKEN }}
           path: cd
