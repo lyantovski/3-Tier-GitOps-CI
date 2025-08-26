@@ -207,7 +207,7 @@ jobs:
                | .spec.template.spec.containers[]
                | select(.name=="backend")
                | .image)
-            = "aakashdevops/backend:" + strenv(IMAGE_TAG)
+            = "acrliorsc.azurecr.io/backend:" + strenv(IMAGE_TAG)
           ' k8s-prod/backend.yaml
 
           # -- Update ONLY Deployment images (frontend)
@@ -216,7 +216,7 @@ jobs:
                | .spec.template.spec.containers[]
                | select(.name=="frontend")
                | .image)
-            = "aakashdevops/frontend:" + strenv(IMAGE_TAG)
+            = "acrliorsc.azurecr.io/frontend:" + strenv(IMAGE_TAG)
           ' k8s-prod/frontend.yaml
 
       - name: Commit & push to CD repo
